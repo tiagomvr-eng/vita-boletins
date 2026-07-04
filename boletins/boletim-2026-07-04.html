@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITA — Boletim · 04 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1A1A1A;
+    --deep: #2C3E2D;
+    --deep-2: #1F2E20;
+    --accent: #5A7A5C;
+    --accent-soft: #7A9A7C;
+    --sand: #F4F1EA;
+    --sand-2: #EDE8D9;
+    --cream: #FAF8F2;
+    --line: #D9D4C7;
+    --muted: #6B6B6B;
+    --warn: #B8704D;
+    --success: #4F7A4F;
+    --danger: #A85A4A;
+    --shadow-soft: 0 1px 3px rgba(44,62,45,0.04), 0 4px 16px rgba(44,62,45,0.06);
+    --shadow-medium: 0 4px 12px rgba(44,62,45,0.08), 0 12px 32px rgba(44,62,45,0.08);
+    --serif: 'Fraunces', Georgia, serif;
+    --sans: 'Inter', -apple-system, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--cream); line-height: 1.6; font-size: 14px; min-height: 100vh; }
+
+  .topbar {
+    background: var(--deep); color: white; padding: 18px 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid var(--deep-2);
+  }
+  .logo { font-family: var(--serif); font-weight: 600; font-size: 28px; letter-spacing: -0.02em; color: white; }
+  .logo span { color: var(--accent-soft); }
+  .topbar-meta { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; text-align: right; }
+  .topbar-meta strong { color: white; font-weight: 500; }
+
+  .tabnav {
+    background: white; border-bottom: 1px solid var(--line); padding: 0 40px;
+    display: flex; overflow-x: auto; position: sticky; top: 64px; z-index: 90; scrollbar-width: thin;
+  }
+  .tabnav button {
+    background: transparent; border: none; padding: 18px 22px; font-family: var(--sans);
+    font-size: 13px; color: var(--muted); cursor: pointer; font-weight: 500;
+    border-bottom: 2px solid transparent; transition: all 0.18s ease; white-space: nowrap;
+  }
+  .tabnav button:hover { color: var(--deep); background: var(--cream); }
+  .tabnav button.active { color: var(--deep); border-bottom-color: var(--accent); font-weight: 600; }
+  .tab-num { font-family: var(--serif); font-size: 11px; color: var(--accent); margin-right: 6px; font-style: italic; }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 48px 40px 40px; }
+  .section { display: none; animation: fadeIn 0.32s ease; }
+  .section.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .section-head { margin-bottom: 34px; border-bottom: 1px solid var(--line); padding-bottom: 22px; }
+  .eyebrow { font-family: var(--serif); font-style: italic; font-size: 13px; color: var(--accent); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .section-title { font-family: var(--serif); font-size: 38px; font-weight: 500; color: var(--deep); line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px; }
+  .section-sub { font-size: 14.5px; color: var(--muted); max-width: 760px; line-height: 1.65; }
+  .section-sub strong { color: var(--ink); font-weight: 600; }
+
+  .lead { font-size: 15px; line-height: 1.7; max-width: 760px; margin-bottom: 16px; }
+  .lead strong { color: var(--deep); font-weight: 600; }
+
+  /* Cards de destaque */
+  .card {
+    background: white; border-radius: 4px; padding: 26px 28px; border: 1px solid var(--line);
+    box-shadow: var(--shadow-soft); margin-bottom: 22px;
+  }
+  .card-label { font-family: var(--serif); font-style: italic; font-size: 12.5px; color: var(--accent); margin-bottom: 6px; letter-spacing: 0.02em; }
+  .card-title { font-family: var(--serif); font-size: 23px; color: var(--deep); font-weight: 600; margin-bottom: 14px; line-height: 1.2; letter-spacing: -0.01em; }
+  .card-body { font-size: 14.5px; color: var(--ink); line-height: 1.7; }
+  .card-body p { margin-bottom: 12px; }
+  .card-body a, .lead a, .cluster-item a.inl { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--line); font-weight: 500; transition: all 0.15s; }
+  .card-body a:hover, .lead a:hover, .cluster-item a.inl:hover { border-bottom-color: var(--accent); background: var(--sand); }
+
+  .takeaway {
+    background: var(--sand); border-left: 3px solid var(--accent); padding: 14px 20px;
+    margin-top: 14px; border-radius: 0 3px 3px 0; font-size: 13.5px; line-height: 1.6;
+  }
+  .takeaway strong { color: var(--deep); }
+
+  /* linha de fontes clicáveis */
+  .sources { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .sources-label { font-family: var(--serif); font-style: italic; font-size: 11.5px; color: var(--muted); margin-right: 2px; }
+  a.src {
+    display: inline-flex; align-items: center; gap: 4px; padding: 4px 11px; background: var(--cream);
+    color: var(--deep); border: 1px solid var(--line); border-radius: 100px; font-size: 12px;
+    font-weight: 500; text-decoration: none; transition: all 0.15s ease;
+  }
+  a.src:hover { background: var(--accent); color: white; border-color: var(--accent); transform: translateY(-1px); }
+  a.src .arw { font-size: 11px; opacity: 0.7; }
+  a.src:hover .arw { opacity: 1; }
+
+  /* pílulas de evidência */
+  .pill { display: inline-block; padding: 3px 11px; border-radius: 100px; font-size: 11px; font-weight: 600; letter-spacing: 0.02em; border: 1px solid var(--line); }
+  .pill.ev-strong { background: #DCE7DC; color: var(--success); border-color: #C0D2C0; }
+  .pill.ev-mid { background: var(--sand); color: var(--deep); border-color: var(--line); }
+  .pill.ev-weak { background: #F5E3D7; color: var(--warn); border-color: #E5C9B7; }
+  .pill.ev-bad { background: #F5D5CE; color: var(--danger); border-color: #E6BBB1; }
+  .pill-row { margin-bottom: 14px; }
+
+  /* pullquote / callout ficha */
+  .callout {
+    background: var(--sand); border-left: 3px solid var(--accent-soft); padding: 18px 24px;
+    margin: 18px 0; font-size: 14px; line-height: 1.6; border-radius: 0 3px 3px 0;
+  }
+  .callout .tag { font-family: var(--serif); font-style: italic; color: var(--accent); font-size: 12px; }
+
+  /* escala de evidência */
+  .ev-scale { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 22px 0; }
+  @media (max-width: 720px) { .ev-scale { grid-template-columns: 1fr 1fr; } }
+  .ev-card { background: white; border: 1px solid var(--line); border-radius: 3px; padding: 14px 16px; border-top: 3px solid var(--accent); }
+  .ev-card .g { font-family: var(--serif); font-size: 22px; font-weight: 600; color: var(--deep); font-style: italic; }
+  .ev-card .d { font-size: 11.5px; color: var(--muted); line-height: 1.45; margin-top: 4px; }
+  .ev-card.a { border-top-color: var(--success); }
+  .ev-card.b { border-top-color: var(--accent); }
+  .ev-card.c { border-top-color: var(--warn); }
+  .ev-card.d { border-top-color: var(--danger); }
+
+  /* clusters */
+  h2.zone { font-family: var(--serif); font-size: 22px; color: var(--deep); font-weight: 600; margin: 34px 0 14px; letter-spacing: -0.01em; }
+  .cluster-item {
+    background: white; border: 1px solid var(--line); border-left: 3px solid var(--accent);
+    border-radius: 3px; padding: 15px 20px; margin-bottom: 10px; font-size: 14px; line-height: 1.6;
+    display: flex; justify-content: space-between; gap: 16px; align-items: baseline; transition: all 0.15s;
+  }
+  .cluster-item:hover { box-shadow: var(--shadow-soft); background: var(--cream); }
+  .cluster-item .txt { flex: 1; }
+  .cluster-item .txt strong { color: var(--deep); }
+
+  /* alerta */
+  .alert-item {
+    background: #FBF4F0; border: 1px solid #E6BBB1; border-left: 3px solid var(--danger);
+    border-radius: 3px; padding: 16px 20px; margin-bottom: 12px; font-size: 14px; line-height: 1.6;
+  }
+  .alert-item strong { color: var(--danger); }
+  .alert-item .sources { border-top-color: #E6BBB1; }
+  .alert-item a.src { background: white; }
+
+  /* vozes */
+  .voices-group { margin-bottom: 20px; }
+  .voices-group h3 { font-family: var(--serif); font-size: 15px; color: var(--deep); font-weight: 600; margin-bottom: 10px; }
+  .voices-list { display: flex; flex-wrap: wrap; gap: 8px; }
+  .voice { display: inline-flex; align-items: center; gap: 4px; padding: 5px 12px; background: white; border: 1px solid var(--line); border-radius: 100px; font-size: 12.5px; color: var(--deep); text-decoration: none; transition: all 0.15s; }
+  .voice:hover { background: var(--deep); color: white; border-color: var(--deep); }
+
+  /* âncora */
+  .anchor {
+    background: var(--deep); color: white; padding: 32px 40px; border-radius: 4px; margin: 26px 0;
+    text-align: center; border-left: 4px solid var(--accent-soft);
+  }
+  .anchor .eb { font-family: var(--serif); font-style: italic; color: var(--accent-soft); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+  .anchor .tx { font-family: var(--serif); font-size: 21px; line-height: 1.45; font-style: italic; max-width: 720px; margin: 0 auto; }
+
+  /* TOC abertura */
+  .toc { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin: 26px 0 6px; }
+  @media (max-width: 720px) { .toc { grid-template-columns: 1fr; } }
+  .toc-item { display: flex; gap: 16px; padding: 16px 18px; background: white; border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 3px; cursor: pointer; transition: all 0.18s ease; }
+  .toc-item:hover { transform: translateX(2px); box-shadow: var(--shadow-medium); background: var(--cream); }
+  .toc-num { font-family: var(--serif); font-size: 26px; color: var(--accent); font-weight: 500; font-style: italic; line-height: 1; flex-shrink: 0; width: 30px; }
+  .toc-title { font-family: var(--serif); font-size: 15px; font-weight: 600; color: var(--deep); margin-bottom: 2px; }
+  .toc-desc { font-size: 11.5px; color: var(--muted); line-height: 1.4; }
+
+  footer { margin-top: 20px; padding: 24px 40px; border-top: 1px solid var(--line); text-align: center; font-size: 11.5px; color: var(--muted); font-style: italic; font-family: var(--serif); }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">VITA<span>.</span></div>
+  <div class="topbar-meta"><strong>Radar diário</strong> · sexta, 4 de julho de 2026<br>Saúde · longevidade · ciência</div>
+</header>
+
+<nav class="tabnav" id="tabnav">
+  <button class="active" data-tab="abertura"><span class="tab-num">1</span>Abertura</button>
+  <button data-tab="destaques"><span class="tab-num">2</span>Os destaques</button>
+  <button data-tab="temas"><span class="tab-num">3</span>Por tema</button>
+  <button data-tab="alertas"><span class="tab-num">4</span>Sinais de alerta</button>
+  <button data-tab="vozes"><span class="tab-num">5</span>Vozes que seguimos</button>
+</nav>
+
+<div class="container">
+
+  <!-- ========== 1. ABERTURA ========== -->
+  <section class="section active" id="abertura">
+    <div class="section-head">
+      <div class="eyebrow">Boletim nº 1 — calibração</div>
+      <h1 class="section-title">O primeiro boletim</h1>
+      <p class="section-sub">Eu varro o X nas suas áreas de interesse, separo o que tem substância do que é barulho, e te trago já mastigado — e no caminho vou te ensinando a <strong>enxergar sozinha</strong> o que é sólido e o que é conversa fiada.</p>
+    </div>
+
+    <p class="lead">Esta rodada foi uma <strong>calibração</strong>: li cerca de 254 posts das quatro abas (Ciência, Saúde, Biotech, Saúde Mental) pra mapear o terreno e começar a seguir as vozes boas. Todo item aqui tem o <strong>link do post original</strong> — clica e vê a fonte com seus próprios olhos.</p>
+
+    <div class="anchor">
+      <div class="eb">A bússola de todo boletim</div>
+      <div class="tx">Nem toda afirmação de saúde tem o mesmo peso. Vou sempre te dizer, em português claro, <em>em que degrau</em> cada história está.</div>
+    </div>
+
+    <p class="lead" style="margin-top:20px;">A escala que vou usar (e que vale a pena ir decorando):</p>
+    <div class="ev-scale">
+      <div class="ev-card a"><span class="g">A</span><div class="d">Muitos estudos <b>em pessoas</b> apontando junto. O mais forte.</div></div>
+      <div class="ev-card b"><span class="g">B</span><div class="d">Um bom estudo em pessoas. Pista forte.</div></div>
+      <div class="ev-card c"><span class="g">C</span><div class="d">Só célula, animal ou mecanismo. Promessa, não certeza.</div></div>
+      <div class="ev-card d"><span class="g">D</span><div class="d">Anedota, opinião, marketing. "Confia em mim".</div></div>
+    </div>
+
+    <div class="toc">
+      <div class="toc-item" data-goto="destaques"><div class="toc-num">2</div><div><div class="toc-title">Os destaques</div><div class="toc-desc">5 histórias com profundidade — o que aprender de cada uma.</div></div></div>
+      <div class="toc-item" data-goto="temas"><div class="toc-num">3</div><div><div class="toc-title">Por tema</div><div class="toc-desc">O resto do que valeu, agrupado por área.</div></div></div>
+      <div class="toc-item" data-goto="alertas"><div class="toc-num">4</div><div><div class="toc-title">Sinais de alerta</div><div class="toc-desc">O que NÃO levar a sério — e por quê.</div></div></div>
+      <div class="toc-item" data-goto="vozes"><div class="toc-num">5</div><div><div class="toc-title">Vozes que seguimos</div><div class="toc-desc">As fontes que passei a seguir por você.</div></div></div>
+    </div>
+  </section>
+
+  <!-- ========== 2. DESTAQUES ========== -->
+  <section class="section" id="destaques">
+    <div class="section-head">
+      <div class="eyebrow">Os destaques da semana</div>
+      <h1 class="section-title">Cinco histórias que valem</h1>
+      <p class="section-sub">Cada uma contada com calma, com o degrau de evidência marcado e as fontes clicáveis.</p>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-strong">Evidência: crítica sólida</span></div>
+      <div class="card-label">O debate do momento</div>
+      <div class="card-title">Bryan Johnson e a tal "gastrite autoimune"</div>
+      <div class="card-body">
+        <p>Bryan Johnson (o bilionário que virou cobaia de si mesmo pra não envelhecer) disse ter uma inflamação no estômago que seria <strong>autoimune</strong> — o corpo se atacando. Vários médicos de verdade caíram em cima, não por implicância, mas por um erro de raciocínio que vale ouro farejar.</p>
+        <p>O gastroenterologista <strong>Keith Siau</strong> foi direto: inflamação leve não é gastrite autoimune — pra dizer que é, precisa de sinais específicos no exame do tecido, que não apareceram; e sugeriu olhar primeiro os <strong>remédios</strong> da pessoa. O dermatologista <strong>Matthew Zirwas</strong>, que se dizia fã dele, resumiu: "os números estão certos, mas a <strong>conclusão</strong> vai machucar gente".</p>
+        <div class="takeaway"><strong>O que levar:</strong> uma coisa é o <em>dado</em> (tem inflamação — verdade), outra é a <em>interpretação</em> (é autoimune, é a comida — salto). A perguntinha mágica: <em>"o dado prova mesmo isso, ou há explicação mais simples?"</em> (Aqui, a mais simples eram os próprios suplementos dele.)</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/drkeithsiau/status/2073169451428479219" target="_blank" rel="noopener">@drkeithsiau <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/MattZirwas/status/2073163063805591784" target="_blank" rel="noopener">@MattZirwas <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Evidência: pista (observacional)</span></div>
+      <div class="card-label">Longevidade</div>
+      <div class="card-title">O sol: vilão ou aliado? (os dois extremos exageram)</div>
+      <div class="card-body">
+        <p>Apareceu bastante gente defendendo o sol como coisa de longevidade — de fotos de "clínicas de heliterapia" dos anos 1950 até a Kayla Barnes citando um <strong>estudo sueco de 20 anos</strong> em que <em>evitar</em> o sol se associou a mais problemas de saúde do que tomá-lo com moderação.</p>
+        <p>Aqui entra uma ideia com nome e tudo: esse estudo é <strong>observacional</strong> — observaram muita gente por anos e viram que quem toma mais sol vive mais. Mas duas coisas <em>andarem juntas</em> não prova que uma <em>causa</em> a outra (quem toma sol também se exercita mais, sai mais...). Não anula o estudo — só o rebaixa de "prova" para <strong>"pista forte"</strong>. Do lado sério, o pneumologista <strong>Roger Seheult</strong> mostra efeitos biológicos concretos de certos comprimentos de luz — e, repare, ele <strong>cita os artigos</strong>.</p>
+        <div class="callout"><span class="tag">💡 quer aprender?</span> Posso te preparar uma <strong>ficha só sobre "estudo observacional × estudo controlado"</strong> — é o conceito que mais destrava a leitura de qualquer notícia de saúde.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/femalelongevity/status/2073112334273294740" target="_blank" rel="noopener">@femalelongevity <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/RogerSeheult/status/2073134923645620406" target="_blank" rel="noopener">@RogerSeheult <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/AlpacaAurelius/status/2072726562470862934" target="_blank" rel="noopener">@AlpacaAurelius <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Evidência: mista</span></div>
+      <div class="card-label">Nutrição</div>
+      <div class="card-title">Fibra, jejum e o hormônio da moda (o tal do GLP-1)</div>
+      <div class="card-body">
+        <p>Vários posts giraram em torno do <strong>GLP-1</strong> — vale saber o que é, porque é o hormônio por trás do Ozempic. Em palavras simples: é uma substância que o <strong>intestino</strong> produz e que avisa o cérebro que você está satisfeita (e ajuda a controlar o açúcar). Os remédios da moda imitam esse hormônio.</p>
+        <p>O Dr. <strong>Jason Fung</strong> destacou que a <strong>fibra</strong> estica o estômago e ajuda a disparar esses hormônios da saciedade; outro perfil ligou o GLP-1 às bactérias do intestino. Já o Dr. <strong>David Ludwig</strong> (Harvard, voz séria) publicou uma lista mais sóbria de conselhos — e ele mesmo pede que busquem <strong>opiniões contrárias</strong>, porque o tema é cheio de gente vendendo certeza.</p>
+        <div class="takeaway"><strong>O que levar:</strong> "aumentar o GLP-1 naturalmente" é um enquadramento esperto de marketing — comer fibra é ótimo, mas é bem diferente de um remédio que imita o hormônio em dose alta. Quando virar "faça X pra turbinar [hormônio da moda]", desconfie do exagero.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/drjasonfung/status/2073097470351900838" target="_blank" rel="noopener">@drjasonfung <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/davidludwigmd/status/2073085012258201995" target="_blank" rel="noopener">@davidludwigmd <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/coookwithchris/status/2072770297938235467" target="_blank" rel="noopener">@coookwithchris <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-strong">Evidência: fontes fortes</span></div>
+      <div class="card-label">Ciência de fronteira</div>
+      <div class="card-title">A longevidade séria acontecendo</div>
+      <div class="card-body">
+        <p>Teve coisa <strong>real e empolgante</strong>, e aqui a régua sobe porque vem de fonte forte:</p>
+        <p>• A <strong>China aprovou a primeira terapia CAR-T para um tumor sólido</strong>. CAR-T é pegar as células de defesa do próprio paciente, reprogramá-las em laboratório pra caçar o câncer, e devolvê-las. Já funcionava em câncer de sangue; valer em tumor sólido (o tipo mais comum) é um marco.<br>
+        • A <strong>Quanta</strong> contou de uma célula <strong>sintética</strong> — montada de pedaços não-vivos — que cresceu e se dividiu, quase como uma célula viva.<br>
+        • E um pesquisador mostrou que alguns animais conseguem <strong>"pausar" o envelhecimento</strong> (a diapausa), sugerindo que envelhecer é, em parte, um <strong>programa</strong> que talvez dê pra mexer.</p>
+        <div class="takeaway"><strong>O que levar:</strong> é aqui que mora a longevidade séria — em revista científica e ensaio clínico, não em thread de influenciador. Segui essas fontes pra você ter a versão adulta das promessas.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/Dr_Singularity/status/2073015901213888661" target="_blank" rel="noopener">@Dr_Singularity <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/QuantaMagazine/status/2073166671322157474" target="_blank" rel="noopener">@QuantaMagazine <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/jpsenescence/status/2073036201049595905" target="_blank" rel="noopener">@jpsenescence <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Evidência: debate legítimo</span></div>
+      <div class="card-label">Saúde mental</div>
+      <div class="card-title">Dois debates que valem acompanhar</div>
+      <div class="card-body">
+        <p>Vozes fortes e um tanto polêmicas — e polêmica boa é bem-vinda. O Prof. <strong>James Davies</strong> e o Dr. <strong>Roger McFillin</strong> batem numa tecla incômoda: a psiquiatria <strong>não tem um exame objetivo</strong> (não há sangue ou imagem que confirme ADHD ou depressão), o que a deixa mais frágil que o resto da medicina. Crítica séria e legítima — sem virar "psiquiatria é tudo falso".</p>
+        <p>Do lado do cuidado prático, o Dr. <strong>Glenn Doyle</strong> (trauma) ensina a dar <strong>cor e forma</strong> a uma dor difícil de nomear, e a Dra. <strong>Jen Wolkin</strong> (ADHD + trauma) traz lembretes simples e humanos. Apareceu até o <strong>Steven Hayes</strong>, criador da ACT (uma terapia muito respeitada). Gente de primeira — segui todos.</p>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/JDaviesPhD/status/2073137938854977731" target="_blank" rel="noopener">@JDaviesPhD <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/DrMcFillin/status/2073118325928874282" target="_blank" rel="noopener">@DrMcFillin <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/DrDoyleSays/status/2073149788330086587" target="_blank" rel="noopener">@DrDoyleSays <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/drjenwolkin/status/2073152705984381224" target="_blank" rel="noopener">@drjenwolkin <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/StevenCHayes/status/2073059889673314793" target="_blank" rel="noopener">@StevenCHayes <span class="arw">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3. POR TEMA ========== -->
+  <section class="section" id="temas">
+    <div class="section-head">
+      <div class="eyebrow">Clusters por tema</div>
+      <h1 class="section-title">O resto do que valeu</h1>
+      <p class="section-sub">A varredura pescou muita coisa boa além dos destaques. Aqui vão os melhores por área — cada um com uma linha do porquê importa, e a fonte clicável.</p>
+    </div>
+
+    <h2 class="zone">🧬 Longevidade &amp; envelhecimento</h2>
+    <div class="cluster-item"><div class="txt">Uma mulher com Alzheimer grave, que há anos só falava sílabas soltas, <strong>voltou a iniciar conversas após uma única dose de psilocibina</strong> — sinal (ainda inicial) de que a química cerebral pode ser mexida.</div><a class="src" href="https://x.com/newscientist/status/2073097483475923267" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">O "paradoxo câncer × Alzheimer": quem tem um costuma ter <strong>menos risco do outro</strong> — pista de que as duas doenças puxam o metabolismo da célula em direções opostas.</div><a class="src" href="https://x.com/agingdoc1/status/2073186186219188717" target="_blank" rel="noopener">@agingdoc1 <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Exercício deixou marca <strong>molecular</strong> de rejuvenescimento no músculo humano (revista Nature Aging) — "treino é remédio" com base de laboratório, não só senso comum.</div><a class="src" href="https://x.com/GGouspillou/status/2073307608534937952" target="_blank" rel="noopener">@GGouspillou <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Quem chega aos 100 não escapa das doenças — só as pega <strong>mais tarde e mais devagar</strong> (a "compressão da doença"), que é o verdadeiro objetivo da longevidade.</div><a class="src" href="https://x.com/siimland/status/2073067968741662965" target="_blank" rel="noopener">@siimland <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🥗 Nutrição</h2>
+    <div class="cluster-item"><div class="txt">"Sensibilidade ao glúten" pode ser menos comum do que se diz: num estudo com 4.002 adultos, a maioria dos que se diziam sensíveis reagia também a <strong>vários outros alimentos</strong> — o vilão nem sempre é o glúten.</div><a class="src" href="https://x.com/Mo_Shiha/status/2073062737144394120" target="_blank" rel="noopener">@Mo_Shiha <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Duas "chaves" do metabolismo que vale conhecer: <strong>mTOR</strong> (liga o crescimento — útil pra músculo, em excesso ligado a câncer) e <strong>AMPK</strong> (liga a economia/limpeza celular). O equilíbrio entre elas é tema central de longevidade.</div><a class="src" href="https://x.com/PGC1a_RB/status/2073378388463493524" target="_blank" rel="noopener">@PGC1a_RB <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🏋️ Performance &amp; treino</h2>
+    <div class="cluster-item"><div class="txt">O <strong>rucking</strong> (caminhar com peso nas costas) ganhou um mecanismo: o peso "engana" o esqueleto a manter o gasto de energia durante a perda de peso — ajudando a não desacelerar o metabolismo.</div><a class="src" href="https://x.com/dantawfik/status/2073119597872775177" target="_blank" rel="noopener">@dantawfik <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">O kettlebell snatch é, biomecanicamente, um movimento <strong>vertical e de potência</strong> — o recado prático é treiná-lo de forma explosiva, não devagar.</div><a class="src" href="https://x.com/DanielBerglind/status/2073101797749629048" target="_blank" rel="noopener">@DanielBerglind <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Sódio no exercício: a maioria dos atletas <strong>não precisa</strong> de reposição calculada — só ultramaratona e afins; o resto pode "temperar a gosto". Bom antídoto ao marketing de eletrólito.</div><a class="src" href="https://x.com/Jeukendrup/status/2072712181288771911" target="_blank" rel="noopener">@Jeukendrup <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🧠 Saúde mental &amp; cérebro</h2>
+    <div class="cluster-item"><div class="txt">Ressonâncias mostraram que crianças de lares instáveis (briga, negligência) têm mudanças cerebrais <strong>parecidas com as de soldados após combate</strong> — o peso real do estresse crônico na infância.</div><a class="src" href="https://x.com/ShiningScience/status/2073221505731964930" target="_blank" rel="noopener">Shining Science <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Um psiquiatra defende <strong>diretrizes para "desprescrever"</strong> (retirar remédio com segurança) — tema pouco falado, mas central pra quem toma medicação psiquiátrica.</div><a class="src" href="https://x.com/markhoro/status/2073158276380811510" target="_blank" rel="noopener">@markhoro <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Vários estudos recentes apontam benefícios psicológicos do <strong>abraço</strong> — pequeno, mas real.</div><a class="src" href="https://x.com/PsychToday/status/2073316633364373784" target="_blank" rel="noopener">Psychology Today <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🔬 Ciência de fronteira (curiosidades que valem)</h2>
+    <div class="cluster-item"><div class="txt">Uma regra dos livros didáticos — "DNA só se copia a partir de um molde" — ganhou uma exceção; a natureza é sempre mais criativa que a regra.</div><a class="src" href="https://x.com/ScienceMagazine/status/2072941685911273964" target="_blank" rel="noopener">Science Mag <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Bebês recém-nascidos já parecem ter um <strong>senso inato de números</strong> (registrado no cérebro) — parte da matemática nasce com a gente.</div><a class="src" href="https://x.com/newscientist/status/2073238033374085147" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">O cérebro só "termina de amadurecer" <strong>décadas</strong> depois do que a sociedade chama de adulto — muda como pensamos idade e responsabilidade.</div><a class="src" href="https://x.com/newscientist/status/2073313894269923625" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Curiosidade do 4 de julho: o caderno de laboratório de <strong>Marie Curie</strong> (1899-1902) ainda é radioativo — e será por 1.500 anos.</div><a class="src" href="https://x.com/NobelPrize/status/2073376363197636857" target="_blank" rel="noopener">Nobel Prize <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">⚕️ Medicina baseada em evidência (o "adulto" da saúde)</h2>
+    <div class="cluster-item"><div class="txt">Um estudo com +1 milhão de atendimentos de emergência achou que a mortalidade <strong>subiu 13%</strong> em hospitais comprados por fundos de private equity — alerta sobre incentivos na saúde.</div><a class="src" href="https://x.com/noahkaufmanmd/status/2073374514403250589" target="_blank" rel="noopener">@noahkaufmanmd <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Idosos que saem do hospital com <strong>um sedativo novo</strong> têm mais risco de queda e morte em 30 dias — argumento concreto contra a prescrição automática.</div><a class="src" href="https://x.com/SinaiHealth/status/2073097971973968235" target="_blank" rel="noopener">Sinai Health <span class="arw">↗</span></a></div>
+  </section>
+
+  <!-- ========== 4. ALERTAS ========== -->
+  <section class="section" id="alertas">
+    <div class="section-head">
+      <div class="eyebrow">🚩 Sinais de alerta</div>
+      <h1 class="section-title">O que NÃO levar a sério</h1>
+      <p class="section-sub">Faz parte do treino reconhecer o lixo. Desta varredura, o que eu descartaria na hora — e o porquê.</p>
+    </div>
+
+    <div class="alert-item"><span class="pill ev-bad">Nível D · perigoso</span>
+      <p style="margin-top:10px;"><strong>Ivermectina e fenbendazol "curando" câncer.</strong> "Depoimentos" de cura com vermífugo. Não há evidência boa, e gente troca tratamento real por isso. Degrau mais baixo possível (anedota + agenda).</p>
+      <div class="sources"><a class="src" href="https://x.com/MakisMedicine/status/2073132002178429341" target="_blank" rel="noopener">ver o post <span class="arw">↗</span></a></div>
+    </div>
+    <div class="alert-item"><span class="pill ev-bad">Nível C mal usado</span>
+      <p style="margin-top:10px;"><strong>"Raiz de dente-de-leão destrói 95% das células de câncer".</strong> O "95%" é numa <strong>placa de laboratório</strong>, não em pessoas. Quase tudo mata célula numa placa (água sanitária também). Sem valor clínico até testar em gente.</p>
+      <div class="sources"><a class="src" href="https://x.com/ShiningScience/status/2073103011858248039" target="_blank" rel="noopener">ver o post <span class="arw">↗</span></a></div>
+    </div>
+    <div class="alert-item"><span class="pill ev-bad">Conflito de interesse</span>
+      <p style="margin-top:10px;"><strong>Vendedores puros de peptídeo.</strong> Quando a pessoa <em>vende</em> o que promove, o post é anúncio disfarçado — não segui nenhum. Um perfil resumiu bem: "há dois tipos em peptídeos — quem estuda e quem quer ganhar dinheiro".</p>
+      <div class="sources"><a class="src" href="https://x.com/tonymission/status/2073275192042738042" target="_blank" rel="noopener">exemplo <span class="arw">↗</span></a><a class="src" href="https://x.com/_9th_Life_/status/2073408685129203928" target="_blank" rel="noopener">a crítica <span class="arw">↗</span></a></div>
+    </div>
+    <div class="alert-item"><span class="pill ev-bad">Nível D</span>
+      <p style="margin-top:10px;"><strong>"Geologia do solo causa câncer"</strong> e afins. Teoria antiga, sem base.</p>
+      <div class="sources"><a class="src" href="https://x.com/the_no_mind/status/2073395662683607527" target="_blank" rel="noopener">ver o post <span class="arw">↗</span></a></div>
+    </div>
+
+    <div class="anchor" style="margin-top:26px;">
+      <div class="eb">Regra de bolso</div>
+      <div class="tx">Se a pessoa <em>vende</em> o que está te recomendando, leia como propaganda — não como conselho.</div>
+    </div>
+  </section>
+
+  <!-- ========== 5. VOZES ========== -->
+  <section class="section" id="vozes">
+    <div class="section-head">
+      <div class="eyebrow">Transparência</div>
+      <h1 class="section-title">As vozes que seguimos por você</h1>
+      <p class="section-sub">Pra treinar seu feed, passei a seguir (e curtir bons posts de) fontes que <strong>citam estudo</strong>. Clica em qualquer uma pra ver o perfil. Você pode "desseguir" quem quiser — é o <em>seu</em> feed.</p>
+    </div>
+
+    <div class="voices-group"><h3>Revistas &amp; ciência</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/newscientist" target="_blank" rel="noopener">New Scientist</a>
+      <a class="voice" href="https://x.com/Nature" target="_blank" rel="noopener">Nature</a>
+      <a class="voice" href="https://x.com/NatMetabolism" target="_blank" rel="noopener">Nature Metabolism</a>
+      <a class="voice" href="https://x.com/QuantaMagazine" target="_blank" rel="noopener">Quanta</a>
+      <a class="voice" href="https://x.com/ScienceMagazine" target="_blank" rel="noopener">Science Magazine</a>
+      <a class="voice" href="https://x.com/NEJM" target="_blank" rel="noopener">NEJM</a>
+      <a class="voice" href="https://x.com/bmj_latest" target="_blank" rel="noopener">The BMJ</a>
+    </div></div>
+    <div class="voices-group"><h3>Longevidade &amp; pesquisa</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/DeryaTR_" target="_blank" rel="noopener">Derya Unutmaz</a>
+      <a class="voice" href="https://x.com/agingdoc1" target="_blank" rel="noopener">David Barzilai</a>
+      <a class="voice" href="https://x.com/exosome" target="_blank" rel="noopener">Thomas Ichim</a>
+      <a class="voice" href="https://x.com/Dr_Singularity" target="_blank" rel="noopener">Dr. Singularity</a>
+    </div></div>
+    <div class="voices-group"><h3>Nutrição</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/BioLayne" target="_blank" rel="noopener">Layne Norton</a>
+      <a class="voice" href="https://x.com/TheAlanAragon" target="_blank" rel="noopener">Alan Aragon</a>
+      <a class="voice" href="https://x.com/KevinH_PhD" target="_blank" rel="noopener">Kevin Hall</a>
+      <a class="voice" href="https://x.com/davidludwigmd" target="_blank" rel="noopener">David Ludwig</a>
+    </div></div>
+    <div class="voices-group"><h3>Performance &amp; pele</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/JeffNippard" target="_blank" rel="noopener">Jeff Nippard</a>
+      <a class="voice" href="https://x.com/GregNuckols" target="_blank" rel="noopener">Greg Nuckols</a>
+      <a class="voice" href="https://x.com/MennoHenselmans" target="_blank" rel="noopener">Menno Henselmans</a>
+      <a class="voice" href="https://x.com/labmuffin" target="_blank" rel="noopener">Michelle Wong (pele)</a>
+    </div></div>
+    <div class="voices-group"><h3>Saúde mental</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/DrDoyleSays" target="_blank" rel="noopener">Glenn Doyle</a>
+      <a class="voice" href="https://x.com/drjenwolkin" target="_blank" rel="noopener">Jen Wolkin</a>
+      <a class="voice" href="https://x.com/JDaviesPhD" target="_blank" rel="noopener">James Davies</a>
+      <a class="voice" href="https://x.com/DrMcFillin" target="_blank" rel="noopener">Roger McFillin</a>
+    </div></div>
+    <div class="voices-group"><h3>Médicos &amp; divulgação (alto alcance)</h3><div class="voices-list">
+      <a class="voice" href="https://x.com/RogerSeheult" target="_blank" rel="noopener">Roger Seheult</a>
+      <a class="voice" href="https://x.com/jsm2334" target="_blank" rel="noopener">Jeffrey Morris</a>
+      <a class="voice" href="https://x.com/hubermanlab" target="_blank" rel="noopener">Andrew Huberman</a>
+      <a class="voice" href="https://x.com/AlpacaAurelius" target="_blank" rel="noopener">Carnivore Aurelius</a>
+      <a class="voice" href="https://x.com/CoachDanGo" target="_blank" rel="noopener">Dan Go</a>
+    </div></div>
+
+    <div class="callout" style="margin-top:24px;">
+      <span class="tag">próximos passos —</span> posso montar as <strong>fichas-conceito</strong> oferecidas (níveis de evidência; observacional × controlado), aprofundar um destaque numa nota, ou rodar o próximo boletim já com o feed mais afinado. É só dizer.
+    </div>
+  </section>
+
+</div>
+
+<footer>VITA · Radar diário de saúde, longevidade e ciência · Boletim informa, não prescreve — decisões são com profissional de saúde.</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tabnav button');
+  const sections = document.querySelectorAll('.section');
+  function go(id) {
+    tabs.forEach(b => b.classList.toggle('active', b.dataset.tab === id));
+    sections.forEach(s => s.classList.toggle('active', s.id === id));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  tabs.forEach(b => b.addEventListener('click', () => go(b.dataset.tab)));
+  document.querySelectorAll('.toc-item').forEach(t => t.addEventListener('click', () => go(t.dataset.goto)));
+</script>
+</body>
+</html>
