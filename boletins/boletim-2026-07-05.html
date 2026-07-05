@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITA — Boletim · 05 Jul 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink:#1A1A1A; --deep:#2C3E2D; --deep-2:#1F2E20; --accent:#5A7A5C; --accent-soft:#7A9A7C;
+    --sand:#F4F1EA; --sand-2:#EDE8D9; --cream:#FAF8F2; --line:#D9D4C7; --muted:#6B6B6B;
+    --warn:#B8704D; --success:#4F7A4F; --danger:#A85A4A;
+    --shadow-soft:0 1px 3px rgba(44,62,45,.04),0 4px 16px rgba(44,62,45,.06);
+    --shadow-medium:0 4px 12px rgba(44,62,45,.08),0 12px 32px rgba(44,62,45,.08);
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--cream);line-height:1.6;font-size:14px;min-height:100vh}
+  .topbar{background:var(--deep);color:#fff;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:1px solid var(--deep-2)}
+  .logo{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.02em}
+  .logo span{color:var(--accent-soft)}
+  .topbar-meta{font-size:12px;color:rgba(255,255,255,.7);letter-spacing:.04em;text-align:right}
+  .topbar-meta strong{color:#fff;font-weight:500}
+  .tabnav{background:#fff;border-bottom:1px solid var(--line);padding:0 40px;display:flex;overflow-x:auto;position:sticky;top:64px;z-index:90}
+  .tabnav button{background:transparent;border:none;padding:18px 22px;font-family:var(--sans);font-size:13px;color:var(--muted);cursor:pointer;font-weight:500;border-bottom:2px solid transparent;transition:all .18s;white-space:nowrap}
+  .tabnav button:hover{color:var(--deep);background:var(--cream)}
+  .tabnav button.active{color:var(--deep);border-bottom-color:var(--accent);font-weight:600}
+  .tab-num{font-family:var(--serif);font-size:11px;color:var(--accent);margin-right:6px;font-style:italic}
+  .container{max-width:1100px;margin:0 auto;padding:48px 40px 40px}
+  .section{display:none;animation:fadeIn .32s ease}
+  .section.active{display:block}
+  @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+  .section-head{margin-bottom:34px;border-bottom:1px solid var(--line);padding-bottom:22px}
+  .eyebrow{font-family:var(--serif);font-style:italic;font-size:13px;color:var(--accent);margin-bottom:6px}
+  .section-title{font-family:var(--serif);font-size:38px;font-weight:500;color:var(--deep);line-height:1.1;letter-spacing:-.02em;margin-bottom:12px}
+  .section-sub{font-size:14.5px;color:var(--muted);max-width:760px;line-height:1.65}
+  .section-sub strong{color:var(--ink);font-weight:600}
+  .lead{font-size:15px;line-height:1.7;max-width:760px;margin-bottom:16px}
+  .lead strong{color:var(--deep);font-weight:600}
+  .card{background:#fff;border-radius:4px;padding:26px 28px;border:1px solid var(--line);box-shadow:var(--shadow-soft);margin-bottom:22px}
+  .card-label{font-family:var(--serif);font-style:italic;font-size:12.5px;color:var(--accent);margin-bottom:6px}
+  .card-title{font-family:var(--serif);font-size:23px;color:var(--deep);font-weight:600;margin-bottom:14px;line-height:1.2;letter-spacing:-.01em}
+  .card-body{font-size:14.5px;color:var(--ink);line-height:1.7}
+  .card-body p{margin-bottom:12px}
+  .card-body a,.lead a,.cluster-item a.inl{color:var(--accent);text-decoration:none;border-bottom:1px solid var(--line);font-weight:500;transition:all .15s}
+  .card-body a:hover,.lead a:hover{border-bottom-color:var(--accent);background:var(--sand)}
+  .takeaway{background:var(--sand);border-left:3px solid var(--accent);padding:14px 20px;margin-top:14px;border-radius:0 3px 3px 0;font-size:13.5px;line-height:1.6}
+  .takeaway strong{color:var(--deep)}
+  .sources{margin-top:18px;padding-top:14px;border-top:1px dashed var(--line);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+  .sources-label{font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--muted);margin-right:2px}
+  a.src{display:inline-flex;align-items:center;gap:4px;padding:4px 11px;background:var(--cream);color:var(--deep);border:1px solid var(--line);border-radius:100px;font-size:12px;font-weight:500;text-decoration:none;transition:all .15s}
+  a.src:hover{background:var(--accent);color:#fff;border-color:var(--accent);transform:translateY(-1px)}
+  a.src .arw{font-size:11px;opacity:.7}
+  .pill{display:inline-block;padding:3px 11px;border-radius:100px;font-size:11px;font-weight:600;border:1px solid var(--line)}
+  .pill.ev-strong{background:#DCE7DC;color:var(--success);border-color:#C0D2C0}
+  .pill.ev-mid{background:var(--sand);color:var(--deep)}
+  .pill.ev-weak{background:#F5E3D7;color:var(--warn);border-color:#E5C9B7}
+  .pill.ev-bad{background:#F5D5CE;color:var(--danger);border-color:#E6BBB1}
+  .pill-row{margin-bottom:14px}
+  .callout{background:var(--sand);border-left:3px solid var(--accent-soft);padding:18px 24px;margin:18px 0;font-size:14px;line-height:1.6;border-radius:0 3px 3px 0}
+  .callout .tag{font-family:var(--serif);font-style:italic;color:var(--accent);font-size:12px}
+  .ev-scale{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+  @media(max-width:720px){.ev-scale{grid-template-columns:1fr 1fr}}
+  .ev-card{background:#fff;border:1px solid var(--line);border-radius:3px;padding:14px 16px;border-top:3px solid var(--accent)}
+  .ev-card .g{font-family:var(--serif);font-size:22px;font-weight:600;color:var(--deep);font-style:italic}
+  .ev-card .d{font-size:11.5px;color:var(--muted);line-height:1.45;margin-top:4px}
+  .ev-card.a{border-top-color:var(--success)}.ev-card.b{border-top-color:var(--accent)}.ev-card.c{border-top-color:var(--warn)}.ev-card.d{border-top-color:var(--danger)}
+  h2.zone{font-family:var(--serif);font-size:22px;color:var(--deep);font-weight:600;margin:34px 0 14px;letter-spacing:-.01em}
+  .cluster-item{background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:3px;padding:15px 20px;margin-bottom:10px;font-size:14px;line-height:1.6;display:flex;justify-content:space-between;gap:16px;align-items:baseline;transition:all .15s}
+  .cluster-item:hover{box-shadow:var(--shadow-soft);background:var(--cream)}
+  .cluster-item .txt{flex:1}
+  .cluster-item .txt strong{color:var(--deep)}
+  .alert-item{background:#FBF4F0;border:1px solid #E6BBB1;border-left:3px solid var(--danger);border-radius:3px;padding:16px 20px;margin-bottom:12px;font-size:14px;line-height:1.6}
+  .alert-item strong{color:var(--danger)}
+  .alert-item .sources{border-top-color:#E6BBB1}
+  .alert-item a.src{background:#fff}
+  .anchor{background:var(--deep);color:#fff;padding:32px 40px;border-radius:4px;margin:26px 0;text-align:center;border-left:4px solid var(--accent-soft)}
+  .anchor .eb{font-family:var(--serif);font-style:italic;color:var(--accent-soft);font-size:12px;text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px}
+  .anchor .tx{font-family:var(--serif);font-size:21px;line-height:1.45;font-style:italic;max-width:720px;margin:0 auto}
+  .toc{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:26px 0 6px}
+  @media(max-width:720px){.toc{grid-template-columns:1fr}}
+  .toc-item{display:flex;gap:16px;padding:16px 18px;background:#fff;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:3px;cursor:pointer;transition:all .18s}
+  .toc-item:hover{transform:translateX(2px);box-shadow:var(--shadow-medium);background:var(--cream)}
+  .toc-num{font-family:var(--serif);font-size:26px;color:var(--accent);font-weight:500;font-style:italic;line-height:1;flex-shrink:0;width:30px}
+  .toc-title{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--deep);margin-bottom:2px}
+  .toc-desc{font-size:11.5px;color:var(--muted);line-height:1.4}
+  footer{margin-top:20px;padding:24px 40px;border-top:1px solid var(--line);text-align:center;font-size:11.5px;color:var(--muted);font-style:italic;font-family:var(--serif)}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="logo">VITA<span>.</span></div>
+  <div class="topbar-meta"><strong>Radar diário</strong> · sábado, 5 de julho de 2026<br>Saúde · longevidade · ciência</div>
+</header>
+<nav class="tabnav" id="tabnav">
+  <button class="active" data-tab="abertura"><span class="tab-num">1</span>Abertura</button>
+  <button data-tab="destaques"><span class="tab-num">2</span>Os destaques</button>
+  <button data-tab="temas"><span class="tab-num">3</span>Por tema</button>
+  <button data-tab="alertas"><span class="tab-num">4</span>Sinais de alerta</button>
+  <button data-tab="vozes"><span class="tab-num">5</span>Vozes</button>
+</nav>
+<div class="container">
+
+  <section class="section active" id="abertura">
+    <div class="section-head">
+      <div class="eyebrow">Boletim nº 2</div>
+      <h1 class="section-title">Boletim de 5 de julho</h1>
+      <p class="section-sub">Hoje tem <strong>novela</strong>: lembra do debate de ontem sobre o Bryan Johnson e a "gastrite autoimune"? Hoje ele <strong>confirmou o diagnóstico</strong>. A gente acompanha o desfecho e aprende mais um par de conceitos no caminho.</p>
+    </div>
+    <div class="anchor">
+      <div class="eb">A bússola de sempre</div>
+      <div class="tx">Nem toda afirmação de saúde tem o mesmo peso. Em cada item eu te digo em <em>que degrau</em> a história está.</div>
+    </div>
+    <div class="ev-scale">
+      <div class="ev-card a"><span class="g">A</span><div class="d">Muitos estudos em pessoas apontando junto. O mais forte.</div></div>
+      <div class="ev-card b"><span class="g">B</span><div class="d">Um bom estudo em pessoas.</div></div>
+      <div class="ev-card c"><span class="g">C</span><div class="d">Só célula, animal ou mecanismo. Promessa, não certeza.</div></div>
+      <div class="ev-card d"><span class="g">D</span><div class="d">Anedota, opinião, marketing.</div></div>
+    </div>
+    <div class="toc">
+      <div class="toc-item" data-goto="destaques"><div class="toc-num">2</div><div><div class="toc-title">Os destaques</div><div class="toc-desc">O caso Bryan Johnson, sol × vitamina D, GLP-1, célula sintética, café.</div></div></div>
+      <div class="toc-item" data-goto="temas"><div class="toc-num">3</div><div><div class="toc-title">Por tema</div><div class="toc-desc">Longevidade, saúde mental, movimento, ciência.</div></div></div>
+      <div class="toc-item" data-goto="alertas"><div class="toc-num">4</div><div><div class="toc-title">Sinais de alerta</div><div class="toc-desc">"Cura do câncer", "consciência cósmica" e outras furadas.</div></div></div>
+      <div class="toc-item" data-goto="vozes"><div class="toc-num">5</div><div><div class="toc-title">Vozes</div><div class="toc-desc">Como o feed está evoluindo.</div></div></div>
+    </div>
+  </section>
+
+  <section class="section" id="destaques">
+    <div class="section-head"><div class="eyebrow">Os destaques</div><h1 class="section-title">Cinco histórias que valem</h1></div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Diagnóstico confirmado</span></div>
+      <div class="card-label">A novela de ontem</div>
+      <div class="card-title">Bryan Johnson confirma: é gastrite autoimune</div>
+      <div class="card-body">
+        <p>O bilionário anti-envelhecimento <strong>confirmou</strong> o diagnóstico — com um tom humilde: disse que a condição "começou há mais de 20 anos", que "por mais saudável que a pessoa tente ser, coisas assim sempre surgem", e que está "animado para resolver o desafio".</p>
+        <div class="takeaway"><strong>O que levar:</strong> (1) humildade — nenhum "protocolo" blinda contra doença autoimune (elas têm genética e mecanismos próprios). (2) Repara na virada: ontem os médicos criticaram a <em>conclusão</em> por falta de prova; hoje, com o <em>diagnóstico formal</em>, a história muda de degrau. É o ciclo saudável: alegação → ceticismo → evidência.</div>
+        <div class="callout"><span class="tag">💡 aprofundar —</span> curei uma <strong>ficha técnica</strong> sobre gastrite autoimune (o que é, gatilhos, e por que anda junto com doença da tireoide) no seu tema <em>Longevidade</em>.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/bryan_johnson/status/2073573179449045137" target="_blank" rel="noopener">o diagnóstico <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/bryan_johnson/status/2073116768890167298" target="_blank" rel="noopener">a resposta <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-weak">Evidência: mecanística (nível C)</span></div>
+      <div class="card-label">Longevidade</div>
+      <div class="card-title">Sol × vitamina D: o pneumologista responde</div>
+      <div class="card-body">
+        <p>O Dr. <strong>Roger Seheult</strong> (pneumologista sério, do MedCram) entrou no debate: quando o Bryan diz "minha vitamina D está alta há anos, o sol não é o problema", Seheult responde que <strong>suplemento de vitamina D "encobre" a falta do sol de verdade</strong> — porque a luz solar faz muito mais que gerar vitamina D (ele aponta efeitos da luz infravermelha, que penetra até o estômago).</p>
+        <div class="takeaway"><strong>O que levar:</strong> estamos num degrau <strong>mecanístico</strong> (nível C) — teoria plausível, defendida por gente séria, mas ainda não "está provado". A lição fina: <em>um suplemento pode normalizar um número no exame sem substituir tudo o que a coisa natural faz.</em></div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/RogerSeheult/status/2073133781578604955" target="_blank" rel="noopener">@RogerSeheult <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/RogerSeheult/status/2073134203185844333" target="_blank" rel="noopener">o infravermelho <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Evidência: real, efeito modesto</span></div>
+      <div class="card-label">Nutrição</div>
+      <div class="card-title">GLP-1: agora vira ingrediente de comida</div>
+      <div class="card-body">
+        <p>Continuando o assunto de ontem (o GLP-1, hormônio da saciedade por trás do Ozempic): um regulador europeu <strong>aprovou como segura uma fibra que estimula a liberação natural de GLP-1</strong>, e ela pode entrar em alimentos dentro de um ano.</p>
+        <div class="takeaway"><strong>O que levar:</strong> é a versão realista da promessa — não é "comida que age como Ozempic", é uma fibra que dá um empurrãozinho. Efeito provavelmente modesto, mas ciência real saindo do laboratório. Fica de olho: vão vender isso com muito exagero.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fonte:</span>
+        <a class="src" href="https://x.com/newscientist/status/2073135082504609824" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-strong">Fonte forte (ciência de fronteira)</span></div>
+      <div class="card-label">Biotecnologia</div>
+      <div class="card-title">A célula sintética que cresce e se divide</div>
+      <div class="card-body">
+        <p>Biólogos montaram a célula artificial mais avançada até hoje — feita de componentes <strong>não-vivos</strong>, ela conseguiu <strong>crescer e se dividir</strong>, como uma célula viva. Um químico de sistemas chamou de "um grande passo rumo ao santo graal de fazer algo vivo a partir de matéria morta".</p>
+        <div class="takeaway"><strong>O que levar:</strong> biologia sintética de fronteira, empolgante e real — mas os próprios cientistas fazem questão de dizer que <strong>"ainda está longe de estar viva"</strong>. Um belo exemplo de como a ciência séria comunica: entusiasmo com o pé no chão.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fontes:</span>
+        <a class="src" href="https://x.com/agingdoc1/status/2073162307064992157" target="_blank" rel="noopener">Agingdoc/Science <span class="arw">↗</span></a>
+        <a class="src" href="https://x.com/QuantaMagazine/status/2073496068633886829" target="_blank" rel="noopener">Quanta <span class="arw">↗</span></a>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="pill-row"><span class="pill ev-mid">Evidência: observacional</span></div>
+      <div class="card-label">Nutrição & hábitos</div>
+      <div class="card-title">Café: a hora importa mais que a quantidade</div>
+      <div class="card-body">
+        <p>Num estudo com 40.725 adultos, o que se associou a menor mortalidade <strong>não foi quanto café, e sim quando</strong> — só o padrão de beber <strong>de manhã</strong> acompanhou menor risco (16% menor mortalidade geral, 31% cardiovascular).</p>
+        <div class="takeaway"><strong>O que levar:</strong> de novo um <strong>estudo observacional</strong> — pista boa, não prova de causa. Cuidado com o pulo: "café de manhã faz bem" pode só refletir que quem toma café só de manhã tem outros hábitos (dorme melhor). Interessante, não prescritivo.</div>
+      </div>
+      <div class="sources"><span class="sources-label">Fonte:</span>
+        <a class="src" href="https://x.com/WilliamWallace/status/2073499546852680189" target="_blank" rel="noopener">William Wallace, PhD <span class="arw">↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="temas">
+    <div class="section-head"><div class="eyebrow">Clusters por tema</div><h1 class="section-title">O resto do que valeu</h1></div>
+
+    <h2 class="zone">🧬 Longevidade &amp; envelhecimento</h2>
+    <div class="cluster-item"><div class="txt">O <strong>pipeline de remédios para Alzheimer em 2026 tem 158 fármacos</strong>, 73% mirando <em>modificar a doença</em> (não só aliviar sintoma) — dá a real do investimento na doença.</div><a class="src" href="https://x.com/agingdoc1/status/2073495815281385755" target="_blank" rel="noopener">Agingdoc <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Nova <strong>CAR-T contra glioblastoma</strong> (o tumor cerebral mais agressivo) publicada na Nature — a imunoterapia avançando nos tumores mais difíceis.</div><a class="src" href="https://x.com/Nature/status/2073051888820391991" target="_blank" rel="noopener">Nature <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Estudo de Harvard: o <strong>microbioma intestinal leva mais de uma década</strong> para se recuperar após remoção de pólipos — pode explicar por que o risco de câncer colorretal segue elevado após a cirurgia.</div><a class="src" href="https://x.com/SmartScience/status/2073538052904083937" target="_blank" rel="noopener">Smart Science <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🧠 Saúde mental &amp; cérebro</h2>
+    <div class="cluster-item"><div class="txt">Um <strong>implante que estimula o nervo vago</strong> ajudou ~69% de pessoas com depressão grave resistente a outros tratamentos — via não-medicamentosa promissora.</div><a class="src" href="https://x.com/NextScience/status/2073523178597704098" target="_blank" rel="noopener">Next Science <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Dr. Glenn Doyle sobre trauma: <strong>viver com dor não resolvida por anos é, em si, um trauma</strong> — e sem ferramentas de autocuidado sobra só a evitação, que piora tudo.</div><a class="src" href="https://x.com/DrDoyleSays/status/2073602776916279552" target="_blank" rel="noopener">@DrDoyleSays <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt"><strong>Ronco crônico e apneia do sono</strong> ligados a dano cerebral e risco de demência — mais um motivo para levar o sono a sério.</div><a class="src" href="https://x.com/SmartScience/status/2073410350926754299" target="_blank" rel="noopener">Smart Science <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🏋️ Movimento &amp; nutrição</h2>
+    <div class="cluster-item"><div class="txt">Boa notícia para quem tem pouco tempo: evidência crescente de que <strong>até poucos minutos de exercício por dia</strong> já são melhores que nada.</div><a class="src" href="https://x.com/TheEconomist/status/2073547435092115774" target="_blank" rel="noopener">The Economist <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Nuance: um estudo ligou <strong>contraceptivos com progestágeno a risco de tumor cerebral</strong> (JAMA). O estudo é real e merece atenção, mas o que importa é o <em>risco absoluto</em> — a conta fina é com o médico.</div><a class="src" href="https://x.com/ShiningScience/status/2073537684925190364" target="_blank" rel="noopener">o estudo <span class="arw">↗</span></a></div>
+
+    <h2 class="zone">🔬 Ciência de fronteira</h2>
+    <div class="cluster-item"><div class="txt">Pela primeira vez leram <strong>por inteiro os pergaminhos carbonizados de Herculano</strong> (destruídos pelo Vesúvio) — com escaneamento e IA. Arqueologia + IA num feito lindo.</div><a class="src" href="https://x.com/newscientist/status/2073247190055625184" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a></div>
+    <div class="cluster-item"><div class="txt">Registros cerebrais de recém-nascidos sugerem que nascemos com um <strong>senso inato de números</strong>.</div><a class="src" href="https://x.com/newscientist/status/2073238033374085147" target="_blank" rel="noopener">New Scientist <span class="arw">↗</span></a></div>
+  </section>
+
+  <section class="section" id="alertas">
+    <div class="section-head"><div class="eyebrow">🚩 Sinais de alerta</div><h1 class="section-title">O que NÃO levar a sério</h1></div>
+    <div class="alert-item"><span class="pill ev-bad">Nível D</span>
+      <p style="margin-top:10px;"><strong>"Sua consciência se conecta ao universo"</strong> e <strong>"sonhos são janelas para eventos em outro lugar".</strong> Linguagem mística vestida de ciência, sem estudo por trás.</p>
+      <div class="sources"><a class="src" href="https://x.com/NightSkyToday/status/2073595469909930204" target="_blank" rel="noopener">consciência <span class="arw">↗</span></a><a class="src" href="https://x.com/AstronomyVibes/status/2073587133898768700" target="_blank" rel="noopener">sonhos <span class="arw">↗</span></a></div>
+    </div>
+    <div class="alert-item"><span class="pill ev-bad">Manchete enganosa</span>
+      <p style="margin-top:10px;"><strong>"Médica curou o câncer com nanopartículas".</strong> É pesquisa em estágio inicial (animais/laboratório), não "cura". Câncer não tem cura única — desconfie de qualquer post com "curou o câncer".</p>
+      <div class="sources"><a class="src" href="https://x.com/latestincosmos/status/2073525257223192660" target="_blank" rel="noopener">ver o post <span class="arw">↗</span></a></div>
+    </div>
+    <div class="alert-item"><span class="pill ev-bad">Nível D + venda</span>
+      <p style="margin-top:10px;"><strong>"Usar óculos escuros no sol te faz queimar"</strong> (Carnivore Aurelius). Extrapola um mecanismo (melanina) para um conselho que pode te deixar sem proteção ocular.</p>
+      <div class="sources"><a class="src" href="https://x.com/AlpacaAurelius/status/2072976252625907924" target="_blank" rel="noopener">ver o post <span class="arw">↗</span></a></div>
+    </div>
+    <div class="anchor" style="margin-top:26px;">
+      <div class="eb">Regra de bolso do dia</div>
+      <div class="tx">Manchete com <em>"cura o câncer"</em>, <em>"conecta ao universo"</em> ou <em>"o segredo que os médicos escondem"</em> = quase sempre furada.</div>
+    </div>
+  </section>
+
+  <section class="section" id="vozes">
+    <div class="section-head"><div class="eyebrow">Bastidor</div><h1 class="section-title">Como o feed está evoluindo</h1></div>
+    <p class="lead">O feed já está bem mais rico que na largada — hoje ele trouxe naturalmente <strong>New Scientist, Nature, Quanta, NEJM, BMJ, Agingdoc, Roger Seheult, Dr. Doyle</strong> e o próprio <strong>Bryan Johnson</strong>. Segui mais algumas vozes de neurociência e pesquisa que apareceram bem. A cada boletim o sinal melhora — e o que não agrega vai ficando pra trás.</p>
+    <div class="callout"><span class="tag">próximos passos —</span> posso montar a ficha-conceito sobre <strong>estudo observacional × controlado</strong> (o conceito que mais apareceu hoje), aprofundar o caso Bryan Johnson (já tem a ficha técnica), ou seguir para o próximo boletim. É só dizer.</div>
+  </section>
+
+</div>
+<footer>VITA · Radar diário de saúde, longevidade e ciência · Boletim informa, não prescreve — decisões são com profissional de saúde.</footer>
+<script>
+  const tabs=document.querySelectorAll('.tabnav button'),sections=document.querySelectorAll('.section');
+  function go(id){tabs.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));sections.forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'});}
+  tabs.forEach(b=>b.addEventListener('click',()=>go(b.dataset.tab)));
+  document.querySelectorAll('.toc-item').forEach(t=>t.addEventListener('click',()=>go(t.dataset.goto)));
+</script>
+</body>
+</html>
